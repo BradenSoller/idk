@@ -5,8 +5,24 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
-  // GET route code here
+router.get('/anime', (req, res) => {
+  const getAnimeDetails = 
+  `
+  SELECT * FROM "anime"
+    
+  `
+ 
+  pool.query(getAnimeDetails)
+  .then(result => {
+    console.log("results.rows", result.rows);
+    res.send(result.rows);
+   
+  })
+  .catch((err) => {
+    console.log("ERROR: Get all appointments", err);
+    res.sendStatus(500);
+  });
+
 });
 
 /**
