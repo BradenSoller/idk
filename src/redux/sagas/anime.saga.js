@@ -16,3 +16,10 @@ import axios from "axios";
         }
 
  }
+
+ export default function* AnimeSaga() { 
+    yield takeLatest("FETCH_ALL_ANIME", getAllAnime)
+  
+  
+    
+  }
