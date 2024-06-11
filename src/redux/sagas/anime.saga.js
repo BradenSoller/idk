@@ -5,7 +5,7 @@ import axios from "axios";
         try {
           const response = yield axios({
             method: "GET",
-            url: "/api/anime",
+            url: "/api/anime/anime",
           });
           yield put({
             type: "SET_ANIME",

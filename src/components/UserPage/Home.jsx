@@ -6,14 +6,30 @@ import { useDispatch } from 'react-redux';
 
 
 function HomePage() {
-  // this component doesn't do much to start, just renders some user reducer info to the DOM
+
   const user = useSelector((store) => store.user);
+  const dispatch = useDispatch();
+  const Animes = useSelector((store) => store.AllAnime) // store connects to reducers 
 
-  const Animes = useSelector ((store) => store.AllAnime) // store connects to reducers 
+  useEffect(() => {
+    dispatch({ type: "FETCH_ALL_ANIME" });
 
-  return (
-    <div className="container">
+    window.scrollTo(0, 0);
+  }, []);
   
+  // this component doesn't do much to start, just renders some user reducer info to the DOM
+  
+  return (
+
+    <div className="container">
+      {Animes.map((anime) => {
+        return (
+          <h3>{anime.title}</h3>
+        )
+      } 
+     
+
+      )}
     </div>
   );
 }
