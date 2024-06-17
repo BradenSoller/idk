@@ -29,7 +29,25 @@ router.get('/anime', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-  // POST route code here
+  const query = `
+  INSERT INTO "anime" ("title")
+    VALUES ($1);
+  `
+  const values = [
+    req.body.title,
+  ]
+
+  console.log("dssdcsdc")
+  pool
+    .query(query, values)
+    .then(result => {
+      res.sendStatus(201)
+    })
+    .catch((err) => {
+      console.error('POST route failed:', err)
+      res.sendStatus(500)
+    })
+   
 });
 
 module.exports = router;
