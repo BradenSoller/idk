@@ -17,9 +17,21 @@ import axios from "axios";
 
  }
 
+ function* postAnime(action) {
+  try {
+      const response = yield axios({
+          method: 'POST',
+          url: '/api/anime',
+          data: action.payload
+      })
+      yield getAllAnime()
+  }
+  catch (error) {
+      console.error('Shelf POST failed:', error)
+  }
+}
+
  export default function* AnimeSaga() { 
-    yield takeLatest("FETCH_ALL_ANIME", getAllAnime)
-  
-  
-    
+   yield takeLatest("FETCH_ALL_ANIME", getAllAnime),
+   yield takeLatest("FETCH_NEW_ANIME", postAnime)
   }
