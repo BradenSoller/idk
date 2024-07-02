@@ -3,6 +3,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector } from 'react-redux'; 
 import { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
+import "./Home.css";
 
 
 function HomePage() {
@@ -24,7 +25,9 @@ function HomePage() {
     <div className="container">
       {Animes.map((anime) => {
         return (
-          <h3>{anime.title}</h3>
+          <div className='animeCards'>
+            <h3>{anime.title}</h3>
+          </div>
         )
       } 
      
