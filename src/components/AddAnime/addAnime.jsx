@@ -12,5 +12,18 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 export default function AddAnime() {
-    
+    const [animeTitle, SetAnimeTitle] = useState('')
+
+
+    const newAnime = (event) => {
+        event.preventDefault();
+
+        dispatch({
+            type: "SAGA/POST_ANIME", payload: {
+                title: title
+            }
+        });
+        setTitle('')
+
+    };
 }
