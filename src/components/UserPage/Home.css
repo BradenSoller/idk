@@ -16,3 +16,10 @@
 .animeCards:hover {
     transform: scale(1.1);
 }
+
+.submitAnime {
+    position: absolute;
+    top: 111px;
+    right: 1163px;
+
+}

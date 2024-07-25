@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
 import "./Home.css";
+import AddAnime from '../AddAnime/addAnime';
 
 
 function HomePage() {
@@ -23,15 +24,29 @@ function HomePage() {
   return (
 
     <div className="container">
+      <div>
+        <div>
+          <input type="text"
+          />
+        </div>
+        <div>
+          <button className='submitAnime' onClick >submit</button>
+        </div>
+      </div>
       {Animes.map((anime) => {
         return (
+          <div>
           <div className='animeCards'>
             <h3>{anime.title}</h3>
+            </div>
           </div>
+
+             
+
         )
       } 
      
-
+    
       )}
     </div>
   );

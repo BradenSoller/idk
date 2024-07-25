@@ -1,15 +1,14 @@
 import { useState, useEffect, Fragment } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import './ScheduleForm.css';
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+// import Box from '@mui/material/Box';
+// import TextField from '@mui/material/TextField';
+// import Dialog from '@mui/material/Dialog';
+// import DialogActions from '@mui/material/DialogActions';
+// import DialogContent from '@mui/material/DialogContent';
+// import DialogContentText from '@mui/material/DialogContentText';
+// import DialogTitle from '@mui/material/DialogTitle';
 
 export default function AddAnime() {
     const [animeTitle, SetAnimeTitle] = useState('')
@@ -24,6 +23,12 @@ export default function AddAnime() {
             }
         });
         setTitle('')
-
+  
     };
+    return (
+        <div>
+            <input type="text" />
+        </div>
+    )
+   
 }
