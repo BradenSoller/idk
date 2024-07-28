@@ -12,12 +12,23 @@ function HomePage() {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const Animes = useSelector((store) => store.AllAnime) // store connects to reducers 
-
+  const [title, setTitle] = useState('');
   useEffect(() => {
     dispatch({ type: "FETCH_ALL_ANIME" });
 
     window.scrollTo(0, 0);
   }, []);
+
+  const newAnime = (event) => {
+    event.preventDefault();
+
+    dispatch({
+      type: "SAGA/POST_ANIME", payload: {
+        title: title
+      }
+    });
+    setTitle('')
+  }
   
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   
@@ -30,7 +41,7 @@ function HomePage() {
           />
         </div>
         <div>
-          <button className='submitAnime' onClick >submit</button>
+          <button className='submitAnime' onClick={newAnime}>submit</button>
         </div>
       </div>
       {Animes.map((anime) => {
