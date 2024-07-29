@@ -17,7 +17,8 @@ import axios from "axios";
 
  }
 
- function* postAnime(action) {
+function* postAnime(action) {
+  console.log("boo", action.payload);
   try {
       const response = yield axios({
           method: 'POST',

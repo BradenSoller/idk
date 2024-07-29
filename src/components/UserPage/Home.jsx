@@ -21,13 +21,15 @@ function HomePage() {
 
   const newAnime = (event) => {
     event.preventDefault();
+  
 
     dispatch({
-      type: "SAGA/POST_ANIME", payload: {
+      type: "FETCH_NEW_ANIME", payload: {
         title: title
       }
     });
     setTitle('')
+  
   }
   
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -38,6 +40,8 @@ function HomePage() {
       <div>
         <div>
           <input type="text"
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
           />
         </div>
         <div>
