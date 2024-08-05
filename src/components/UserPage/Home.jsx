@@ -67,7 +67,7 @@ function HomePage() {
                       {anime.is_liked ? (
                           <StarOutlinedIcon className="star"></StarOutlinedIcon>
                     ) : (
-                        <StarBorderOutlinedIcon className="star"></StarBorderOutlinedIcon>
+                        <StarBorderOutlinedIcon className="OutlinedStar"></StarBorderOutlinedIcon>
                       )}
                  </Button>
               

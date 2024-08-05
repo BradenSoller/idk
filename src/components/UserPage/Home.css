@@ -23,3 +23,15 @@
     right: 730px;
 
 }
+
+.star {
+    position: absolute;
+    top: 1700%;
+    right: 10%;
+}
+
+.OutlinedStar{
+    position: absolute;
+        top: 1700%;
+        right: 10%;
+}
