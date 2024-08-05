@@ -32,7 +32,26 @@ function* postAnime(action) {
   }
 }
 
+function* StatusChange(action) {
+  try {
+    const editedStatus = action.payload;
+
+    const response = yield axios({
+      method: "PUT",
+      url: `/api/anime/status/${editedStatus}`,
+    });
+
+    yield put({
+      type: "FETCH_ALL_ANIME",
+    });
+  } catch (err) {
+    console.log("submitStatusChange failed.", err);
+  }
+}
+
  export default function* AnimeSaga() { 
    yield takeLatest("FETCH_ALL_ANIME", getAllAnime),
-   yield takeLatest("FETCH_NEW_ANIME", postAnime)
+     yield takeLatest("FETCH_NEW_ANIME", postAnime),
+     yield takeLatest("CHANGE_STATUS", StatusChange)
+  
   }

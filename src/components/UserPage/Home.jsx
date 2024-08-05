@@ -5,7 +5,9 @@ import { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
 import "./Home.css";
 import AddAnime from '../AddAnime/addAnime';
-
+import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
+import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
+import { Button } from '@mui/material';
 
 function HomePage() {
 
@@ -31,6 +33,14 @@ function HomePage() {
     setTitle('')
   
   }
+
+  const StatusChange = (id) => {
+    dispatch({
+      type: "CHANGE_STATUS",
+      payload: id,
+    });
+  };
+
   
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   
@@ -52,20 +62,46 @@ function HomePage() {
         return (
           <div>
           <div className='animeCards'>
-            <h3>{anime.title}</h3>
+              <h3>{anime.title}</h3>
+              <Button onClick={() => StatusChange(anime.id)}>
+                      {anime.is_liked ? (
+                          <StarOutlinedIcon className="star"></StarOutlinedIcon>
+                    ) : (
+                        <StarBorderOutlinedIcon className="star"></StarBorderOutlinedIcon>
+                      )}
+                 </Button>
+              
             </div>
+
+    
           </div>
-
-             
-
         )
       } 
+        
      
     
       )}
     </div>
   );
 }
+
+// <div>
+//   {Animes.map((anime) => {
+//     return (
+//       <div className="AnimeDisplay" key={anime.id}>
+//         <h1>{anime.title}</h1>
+//         <Button onClick={() => StatusChange(anime.id)}>
+//           {anime.is_liked ? (
+//             <StarOutlinedIcon className="star"></StarOutlinedIcon>
+//           ) : (
+//             <StarBorderOutlinedIcon className="star"></StarBorderOutlinedIcon>
+//           )}
+//         </Button>
+//       </div>
+
+  //   )
+
+  // })}
 
 // this allows us to use <App /> in index.js
 export default HomePage;

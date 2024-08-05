@@ -50,4 +50,24 @@ router.post('/', (req, res) => {
    
 });
 
+
+router.put('/status/:id', (req, res) => {
+  
+  const sqlText = `
+  UPDATE "anime"
+   SET "is_liked" = NOT "is_liked"
+   WHERE "id" = ${req.params.id};
+    `
+
+  pool.query(sqlText)
+  .then((dbResult) =>{
+      res.sendStatus(200);
+  })
+  .catch((dbError)=>{
+      console.log('PUT /status:id failed', dbError)
+      res.sendStatus(500);
+  })
+});
+
+
 module.exports = router;
