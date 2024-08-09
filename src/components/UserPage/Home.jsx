@@ -8,6 +8,7 @@ import AddAnime from '../AddAnime/addAnime';
 import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import { Button } from '@mui/material';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function HomePage() {
 
@@ -21,6 +22,8 @@ function HomePage() {
     window.scrollTo(0, 0);
   }, []);
 
+const history  = useHistory()
+
   const newAnime = (event) => {
     event.preventDefault();
   
@@ -31,6 +34,7 @@ function HomePage() {
       }
     });
     setTitle('')
+
   
   }
 
@@ -39,6 +43,7 @@ function HomePage() {
       type: "CHANGE_STATUS",
       payload: id,
     });
+    history.push('/info')
   };
 
   
@@ -60,7 +65,6 @@ function HomePage() {
       </div>
       {Animes.map((anime) => {
         return (
-          <div>
           <div className='animeCards'>
               <h3>{anime.title}</h3>
               <Button onClick={() => StatusChange(anime.id)}>
@@ -69,13 +73,14 @@ function HomePage() {
                     ) : (
                         <StarBorderOutlinedIcon className="OutlinedStar"></StarBorderOutlinedIcon>
                       )}
-                 </Button>
-              
+            </Button>
+          
             </div>
-
+   
     
-          </div>
+      
         )
+      
       } 
         
      
