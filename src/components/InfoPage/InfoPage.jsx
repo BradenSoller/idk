@@ -29,17 +29,23 @@ console.log(Animes);
     
     <div className="container">
       
-      {!Animes.is_liked && Animes.map((anime) => {
+      {Animes.map((anime) => {
         return (
-          <div className="animeCards">
-            <h3>{anime.title}</h3>{" "}
-            <Button onClick={() => StatusChange(anime.id)}>
-              {anime.is_liked ? (
-                <StarOutlinedIcon className="star"></StarOutlinedIcon>
-              ) : (
-                <StarBorderOutlinedIcon className="OutlinedStar"></StarBorderOutlinedIcon>
-              )}
-            </Button>
+          <div>
+            {anime.is_liked &&
+              <div className="animeCards">
+            
+                <h3>{anime.title}</h3>
+                <Button onClick={() => StatusChange(anime.id)}>
+                  {anime.is_liked ? (
+                    <StarOutlinedIcon className="star"></StarOutlinedIcon>
+                  ) : (
+                    <StarBorderOutlinedIcon className="OutlinedStar"></StarBorderOutlinedIcon>
+                  )}
+                </Button>
+            
+              </div>
+            }
           </div>
         );
       })}
