@@ -8,8 +8,8 @@ padding: 10px;
   /* margin: 0 0 30px; */
   background-color:black;
   overflow: hidden;
- border-bottom: 100px;
- border-color: #08fa00;
+ border-bottom: 5px solid #08fa00;
+ 
  
 }
 
@@ -32,8 +32,7 @@ padding: 10px;
   text-decoration: none;
   margin-left: 25px;
   font-size: 15px;
-border-bottom: 30px;
-border-color:#08fa00 ;
+
 
   /* these last two make the logout button in
   the nav bar look like another link */
