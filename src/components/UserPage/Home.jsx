@@ -43,7 +43,7 @@ const history  = useHistory()
       type: "CHANGE_STATUS",
       payload: id,
     });
-    history.push('/info')
+   
   };
 
   
@@ -63,7 +63,7 @@ const history  = useHistory()
           <button className='submitAnime' onClick={newAnime}>submit</button>
         </div>
       </div>
-      {Animes.map((anime) => {
+     {Animes.map((anime) => {
         return (
           <div className='animeCards'>
               <h3>{anime.title}</h3>
