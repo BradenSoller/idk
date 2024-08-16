@@ -54,7 +54,7 @@ const history  = useHistory()
     <div className="container">
       <div>
         <div>
-          <input type="text"
+          <input className='inputAnime' type="text"
             value={title}
             onChange={(event) => setTitle(event.target.value)}
           />

@@ -11,6 +11,7 @@
     text-align: center;
     margin: 20px;
     background-color: #f5f5f5;
+    margin-top: 80px; 
    
 }
 
@@ -20,8 +21,8 @@
 
 .submitAnime {
     position: absolute;
-    top: 111px;
-    right: 730px;
+    top: 18.75%;
+    right: 79.25%;
 
 }
 
@@ -35,4 +36,10 @@
     position: absolute;
         top: 1700%;
         right: 10%;
+}
+
+.inputAnime{
+     position: absolute;
+    top: 18%;
+    right: 86%;
 }
