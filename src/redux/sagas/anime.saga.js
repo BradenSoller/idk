@@ -20,12 +20,16 @@ import axios from "axios";
 function* postAnime(action) {
   console.log("boo", action.payload);
   try {
-      const response = yield axios({
-          method: 'POST',
-          url: '/api/anime',
-          data: action.payload
-      })
-      yield getAllAnime()
+    const headers = {
+      "content-type": "multipart/form-data",
+    };
+    const response = yield axios({
+      method: "POST",
+      url: "/api/anime",
+      headers: headers,
+      data: action.payload,
+    });
+    yield getAllAnime()
   }
   catch (error) {
       console.error('Shelf POST failed:', error)
@@ -55,3 +59,13 @@ function* StatusChange(action) {
      yield takeLatest("CHANGE_STATUS", StatusChange)
   
   }
+
+
+//   try {
+//     const response = yield axios({
+//         method: 'POST',
+//         url: '/api/anime',
+//         data: action.payload
+//     })
+//     yield getAllAnime()
+// }
