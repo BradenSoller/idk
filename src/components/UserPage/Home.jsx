@@ -9,6 +9,7 @@ import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import { Button } from '@mui/material';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
 function HomePage() {
 
@@ -46,12 +47,12 @@ const history  = useHistory()
    
   };
 
-  // const deleteTag = (tag) => {
-  //   dispatch({
-  //     type: "DELETE_TAG",
-  //     payload: tag,
-  //   });
-  // };
+  const deleteAnime = (anime) => {
+    dispatch({
+      type: "DELETE_ANIME",
+      payload: anime,
+    });
+  };
   
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   
@@ -80,6 +81,10 @@ const history  = useHistory()
                         <StarBorderOutlinedIcon className="OutlinedStar"></StarBorderOutlinedIcon>
                       )}
             </Button>
+            <Button className='deleteAnime' onClick={() => deleteAnime(anime)}>
+              <DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon>
+            </Button>
+
           
             </div>
    
