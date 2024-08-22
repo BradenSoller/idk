@@ -53,10 +53,27 @@ function* StatusChange(action) {
   }
 }
 
+function* deleteAnime(action) {
+  try {
+    const response = yield axios({
+      method: "DELETE",
+      url: `/api/anime/${action.payload.id}`,
+      data: action.payload,
+    });
+    yield put({
+      type: "FETCH_ALL_ANIME",
+    });
+  } catch (error) {
+    console.log("Unable to delete tag", error);
+  }
+}
+
  export default function* AnimeSaga() { 
    yield takeLatest("FETCH_ALL_ANIME", getAllAnime),
      yield takeLatest("FETCH_NEW_ANIME", postAnime),
-     yield takeLatest("CHANGE_STATUS", StatusChange)
+     yield takeLatest("CHANGE_STATUS", StatusChange),
+     yield takeLatest("DELETE_ANIME", deleteAnime)
+   
   
   }
 
