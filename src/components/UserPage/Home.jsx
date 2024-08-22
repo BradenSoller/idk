@@ -46,6 +46,12 @@ const history  = useHistory()
    
   };
 
+  // const deleteTag = (tag) => {
+  //   dispatch({
+  //     type: "DELETE_TAG",
+  //     payload: tag,
+  //   });
+  // };
   
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   
