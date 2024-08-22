@@ -43,3 +43,9 @@
     top: 18%;
     right: 86%;
 }
+
+.deleteAnime{
+    position: absolute;
+    bottom: -62%;
+    left: -34%
+}
