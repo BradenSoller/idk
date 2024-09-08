@@ -70,6 +70,7 @@ const history  = useHistory()
           <button className='submitAnime' onClick={newAnime}>submit</button>
         </div>
       </div>
+      <div className='backroundCard'>
      {Animes.map((anime) => {
         return (
           <div className='animeCards'>
@@ -96,7 +97,8 @@ const history  = useHistory()
         
      
     
-      )}
+        )}
+      </div>
     </div>
   );
 }
