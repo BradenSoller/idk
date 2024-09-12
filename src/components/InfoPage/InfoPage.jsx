@@ -8,7 +8,7 @@ import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import { Button } from "@mui/material";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-
+import "./infoPage.css"
 // This is one of our simplest components
 // It doesn't have local state
 // It doesn't dispatch any redux actions or display any part of redux state
@@ -28,7 +28,7 @@ console.log(Animes);
   return (
     
     <div className="container">
-      
+      <div className="favoriteCard">
       {Animes.map((anime) => {
         return (
           <div>
@@ -50,7 +50,9 @@ console.log(Animes);
         );
       })}
       
+    </div> 
     </div>
+    
   );
 }
 
