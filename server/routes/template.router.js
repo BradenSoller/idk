@@ -1,6 +1,10 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {
+  rejectUnauthenticated,
+} = require("../modules/authentication-middleware");
+const cloudinaryUpload = require("../modules/cloudinary.config");
 
 /**
  * GET route template
@@ -28,19 +32,28 @@ router.get('/anime', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
+router.post('/', cloudinaryUpload.single("image"), async (req, res) => {
+ 
+  const fileUrl = req.file.path;
+
   const query = `
-  INSERT INTO "anime" ("title")
-    VALUES ($1);
+  INSERT INTO "anime" ("title","image")
+
+    VALUES ($1,$2);
+
+    RETURNING "id"
+
   `
   const values = [
     req.body.title,
+    fileUrl
   ]
 
   console.log("dssdcsdc")
   pool
     .query(query, values)
     .then(result => {
+      
       res.sendStatus(201)
     })
     .catch((err) => {

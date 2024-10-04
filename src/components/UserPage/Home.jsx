@@ -17,24 +17,32 @@ function HomePage() {
   const dispatch = useDispatch();
   const Animes = useSelector((store) => store.AllAnime) // store connects to reducers 
   const [title, setTitle] = useState('');
+  let [imageInput, setImageInput] = useState("");
   useEffect(() => {
     dispatch({ type: "FETCH_ALL_ANIME" });
 
     window.scrollTo(0, 0);
   }, []);
 
-const history  = useHistory()
+  const history = useHistory()
+  
+  // const eventForm = new FormData();
+
 
   const newAnime = (event) => {
     event.preventDefault();
-  
+
+    eventForm.append("image", imageInput);
+    eventForm.append("title", title);
+
 
     dispatch({
-      type: "FETCH_NEW_ANIME", payload: {
-        title: title
+      type: "FETCH_NEW_ANIME",
+      payload: eventForm
       }
-    });
+    );
     setTitle('')
+    setImageInput('')
 
   
   }
@@ -64,6 +72,16 @@ const history  = useHistory()
           <input className='inputAnime' type="text"
             value={title}
             onChange={(event) => setTitle(event.target.value)}
+          />
+        </div>
+        <div>
+          <input
+            id="event-image-input"
+            type="file"
+            onChange={(e) => setImageInput(e.target.files[0])}
+            sx={{
+              width: 230,
+            }}
           />
         </div>
         <div>
