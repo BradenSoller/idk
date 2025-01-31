@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
 import "./Home.css";
-import AddAnime from '../AddAnime/addAnime';
+
 import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import { Button } from '@mui/material';
@@ -26,7 +26,7 @@ function HomePage() {
 
   const history = useHistory()
   
-  // const eventForm = new FormData();
+  const eventForm = new FormData();
 
 
   const newAnime = (event) => {
@@ -92,6 +92,7 @@ function HomePage() {
      {Animes.map((anime) => {
         return (
           <div className='animeCards'>
+            <img src={anime.image}></img>
               <h3>{anime.title}</h3>
               <Button onClick={() => StatusChange(anime.id)}>
                       {anime.is_liked ? (

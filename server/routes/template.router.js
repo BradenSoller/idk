@@ -18,7 +18,7 @@ router.get('/anime', (req, res) => {
  
   pool.query(getAnimeDetails)
   .then(result => {
-    console.log("results.rows", result.rows);
+
     res.send(result.rows);
    
   })
@@ -33,36 +33,48 @@ router.get('/anime', (req, res) => {
  * POST route template
  */
 router.post('/', cloudinaryUpload.single("image"), async (req, res) => {
- 
-  const fileUrl = req.file.path;
+  try {
+    // Check if the file exists
+    if (!req.file) {
+      return res.status(400).send("No file uploaded.");
+    }
 
-  const query = `
-  INSERT INTO "anime" ("title","image")
+    const fileUrl = req.file.path; // Cloudinary URL of the uploaded file
+    const title = req.body.title;
+    console.log("fileUrl", fileUrl);
+    
 
-    VALUES ($1,$2);
+    // Ensure the title is provided
+    if (!title) {
+      return res.status(400).send("Title is required.");
+    }
 
-    RETURNING "id"
+    // SQL query for inserting the anime data
+    const query = `
+      INSERT INTO "anime" ("title", "image")
+      VALUES ($1, $2)
+      RETURNING "id";
+    `;
 
-  `
-  const values = [
-    req.body.title,
-    fileUrl
-  ]
+    const values = [title, fileUrl];
 
-  console.log("dssdcsdc")
-  pool
-    .query(query, values)
-    .then(result => {
-      
-      res.sendStatus(201)
-    })
-    .catch((err) => {
-      console.error('POST route failed:', err)
-      res.sendStatus(500)
-    })
-   
+    // Execute the query
+    const result = await pool.query(query, values);
+
+    // If insert is successful, return the anime ID
+    if (result.rows.length > 0) {
+      res.status(201).json({
+        message: "Anime added successfully",
+        id: result.rows[0].id
+      });
+    } else {
+      res.status(500).send("Failed to add anime");
+    }
+  } catch (err) {
+    console.error('POST route failed:', err);
+    res.status(500).send("Server error");
+  }
 });
-
 
 router.put('/status/:id', (req, res) => {
   

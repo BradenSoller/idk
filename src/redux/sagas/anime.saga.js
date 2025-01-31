@@ -29,7 +29,9 @@ function* postAnime(action) {
       headers: headers,
       data: action.payload,
     });
-    yield getAllAnime()
+    yield put({
+      type: "FETCH_ALL_ANIME",
+    });
   }
   catch (error) {
       console.error('Shelf POST failed:', error)
