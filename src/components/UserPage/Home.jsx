@@ -92,8 +92,9 @@ function HomePage() {
      {Animes.map((anime) => {
         return (
           <div className='animeCards'>
-            <img src={anime.image}></img>
-              <h3>{anime.title}</h3>
+            <img className='cardImage' src={anime.image}></img>
+            <h3 className='cardText'> {anime.title}</h3>
+        
               <Button onClick={() => StatusChange(anime.id)}>
                       {anime.is_liked ? (
                           <StarOutlinedIcon className="star"></StarOutlinedIcon>
