@@ -10,6 +10,23 @@ import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import { Button } from '@mui/material';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import { Modal } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 1000,
+  height: 500,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  borderRadius: 5,
+};
+
 
 function HomePage() {
 
@@ -18,6 +35,10 @@ function HomePage() {
   const Animes = useSelector((store) => store.AllAnime) // store connects to reducers 
   const [title, setTitle] = useState('');
   let [imageInput, setImageInput] = useState("");
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   useEffect(() => {
     dispatch({ type: "FETCH_ALL_ANIME" });
 
@@ -65,8 +86,10 @@ function HomePage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   
   return (
+    
 
     <div className="container">
+
       <div>
         <div>
           <input className='inputAnime' type="text"
@@ -89,9 +112,12 @@ function HomePage() {
         </div>
       </div>
       <div className='backroundCard'>
+        
      {Animes.map((anime) => {
-        return (
-          <div className='animeCards'>
+       return (
+         
+          
+         <div onClick={handleOpen} className='animeCards'>
             <img className='cardImage' src={anime.image}></img>
             <h3 className='cardText'> {anime.title}</h3>
         
@@ -105,19 +131,43 @@ function HomePage() {
             <Button className='deleteAnime' onClick={() => deleteAnime(anime)}>
               <DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon>
             </Button>
-
-          
             </div>
-   
-    
-      
-        )
-      
-      } 
+     )} 
+
         
      
     
         )}
+        <div className='ModalHome'>
+
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                Text in a modal
+              </Typography>
+              <div>
+                {Animes.map((anime) => {
+
+                  return (
+                
+                  
+            
+        
+              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                {anime.title}
+              </Typography>
+              
+                )})}
+            </div>
+            </Box>
+    
+          </Modal>
+        </div>
       </div>
     </div>
   );
