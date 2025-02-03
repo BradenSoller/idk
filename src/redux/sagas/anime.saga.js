@@ -70,11 +70,28 @@ function* deleteAnime(action) {
   }
 }
 
+function* SelectedAnime(action) {
+  try {
+    const response = yield axios({
+      method: "GET",
+      url: `/api/anime/${action.payload.id}`,
+    });
+    yield put({
+      type: "SELECT_ANIME",
+      payload: response.data,
+    });
+  } catch (error) {
+    console.log("Unable to get events from server", error);
+  }
+}
+
  export default function* AnimeSaga() { 
    yield takeLatest("FETCH_ALL_ANIME", getAllAnime),
      yield takeLatest("FETCH_NEW_ANIME", postAnime),
      yield takeLatest("CHANGE_STATUS", StatusChange),
-     yield takeLatest("DELETE_ANIME", deleteAnime)
+     yield takeLatest("DELETE_ANIME", deleteAnime),
+     yield takeLatest("SELECT_ANIME", SelectedAnime)
+
    
   
   }
