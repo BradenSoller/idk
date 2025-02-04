@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
 import AllAnime from './getAnime.reducer';
+import selectAnime from './selectedAnime.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -12,7 +13,9 @@ import AllAnime from './getAnime.reducer';
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user,
-  AllAnime,// will have an id and username if someone is logged in
+  AllAnime,
+  selectAnime,
+  // will have an id and username if someone is logged in
 });
 
 export default rootReducer;

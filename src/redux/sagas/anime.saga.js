@@ -72,14 +72,19 @@ function* deleteAnime(action) {
 
 function* SelectedAnime(action) {
   try {
+    
     const response = yield axios({
       method: "GET",
-      url: `/api/anime/${action.payload.id}`,
+      url: `/api/anime/${action.payload.id}`
     });
+    console.log("SAGAGAGAGA",action.payload.id);
+    
     yield put({
       type: "SELECT_ANIME",
       payload: response.data,
     });
+    console.log("selected anime", response.data);
+    
   } catch (error) {
     console.log("Unable to get events from server", error);
   }
@@ -90,7 +95,7 @@ function* SelectedAnime(action) {
      yield takeLatest("FETCH_NEW_ANIME", postAnime),
      yield takeLatest("CHANGE_STATUS", StatusChange),
      yield takeLatest("DELETE_ANIME", deleteAnime),
-     yield takeLatest("SELECT_ANIME", SelectedAnime)
+     yield takeLatest("FETCH_SELECTED_ANIME", SelectedAnime)
 
    
   

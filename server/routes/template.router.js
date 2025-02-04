@@ -28,6 +28,28 @@ router.get('/anime', (req, res) => {
   });
 
 });
+router.get('/anime/:id', (req, res) => {
+  const animeId = req.params.id; // Get the ID from the URL parameter
+  console.log("Received anime ID:", animeId);  // Log the received ID
+  
+  const getAnimeById = `
+    SELECT * FROM "anime" WHERE "id" = $1
+  `;
+
+  pool.query(getAnimeById, [animeId])
+    .then(result => {
+      console.log("Query result:", result.rows);  // Log the result from the database
+      if (result.rows.length === 0) {
+        return res.status(404).send({ error: "Anime not found" });
+      }
+      res.send(result.rows[0]);  // Send the first (and only) result
+    })
+    .catch((err) => {
+      console.log("ERROR: Get anime by ID", err);
+      res.sendStatus(500);
+    });
+});
+
 
 /**
  * POST route template

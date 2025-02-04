@@ -32,18 +32,31 @@ function HomePage() {
 
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
-  const Animes = useSelector((store) => store.AllAnime) // store connects to reducers 
+  
+  const Animes = useSelector((store) => store.AllAnime)
+  console.log("all animes",Animes);  
+  const singleAnime = useSelector((store) => store.selectAnime);
+  console.log("singleAnime", singleAnime);
+  
+
   const [title, setTitle] = useState('');
   let [imageInput, setImageInput] = useState("");
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    setOpen(true);
+  }
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
+
     dispatch({ type: "FETCH_ALL_ANIME" });
+    FetchSingleAnime;
+   
 
     window.scrollTo(0, 0);
   }, []);
+
+
 
   const history = useHistory()
   
@@ -82,6 +95,14 @@ function HomePage() {
       payload: anime,
     });
   };
+
+  const FetchSingleAnime = (id) => {
+    console.log("payload",id);
+    dispatch({
+      type: "FETCH_SELECTED_ANIME",
+      payload:{id}
+    });
+  };
   
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   
@@ -116,8 +137,7 @@ function HomePage() {
      {Animes.map((anime) => {
        return (
          
-          
-         <div onClick={handleOpen} className='animeCards'>
+         <div  className="animeCards"key={anime.id} onClick={() => FetchSingleAnime(anime.id)}>
             <img className='cardImage' src={anime.image}></img>
             <h3 className='cardText'> {anime.title}</h3>
         
@@ -138,7 +158,7 @@ function HomePage() {
      
     
         )}
-        <div className='ModalHome'>
+        {/* <div className='ModalHome'>
 
           <Modal
             open={open}
@@ -151,7 +171,7 @@ function HomePage() {
                 Text in a modal
               </Typography>
               <div>
-                {Animes.map((anime) => {
+                {singleAnime.map((anime) => {
 
                   return (
                 
@@ -167,7 +187,7 @@ function HomePage() {
             </Box>
     
           </Modal>
-        </div>
+        </div> */}
       </div>
     </div>
   );
