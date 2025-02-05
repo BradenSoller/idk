@@ -50,8 +50,7 @@ function HomePage() {
   useEffect(() => {
 
     dispatch({ type: "FETCH_ALL_ANIME" });
-    FetchSingleAnime;
-   
+
 
     window.scrollTo(0, 0);
   }, []);
@@ -136,7 +135,7 @@ function HomePage() {
         
      {Animes.map((anime) => {
        return (
-         
+         <div onClick={handleOpen}>
          <div  className="animeCards"key={anime.id} onClick={() => FetchSingleAnime(anime.id)}>
             <img className='cardImage' src={anime.image}></img>
             <h3 className='cardText'> {anime.title}</h3>
@@ -151,14 +150,15 @@ function HomePage() {
             <Button className='deleteAnime' onClick={() => deleteAnime(anime)}>
               <DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon>
             </Button>
-            </div>
+           </div>
+         </div>
      )} 
 
         
      
     
         )}
-        {/* <div className='ModalHome'>
+        <div className='ModalHome'>
 
           <Modal
             open={open}
@@ -187,7 +187,7 @@ function HomePage() {
             </Box>
     
           </Modal>
-        </div> */}
+        </div>
       </div>
     </div>
   );

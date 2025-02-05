@@ -28,7 +28,7 @@ router.get('/anime', (req, res) => {
   });
 
 });
-router.get('/anime/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const animeId = req.params.id; // Get the ID from the URL parameter
   console.log("Received anime ID:", animeId);  // Log the received ID
   
