@@ -40,7 +40,7 @@ function HomePage() {
   
 
   const [title, setTitle] = useState('');
-  let [imageInput, setImageInput] = useState("");
+  const [imageInput, setImageInput] = useState("");
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -135,9 +135,9 @@ function HomePage() {
         
      {Animes.map((anime) => {
        return (
-         <div onClick={handleOpen}>
+
          <div  className="animeCards"key={anime.id} onClick={() => FetchSingleAnime(anime.id)}>
-            <img className='cardImage' src={anime.image}></img>
+             <img onClick={handleOpen} className='cardImage' src={anime.image}></img>
             <h3 className='cardText'> {anime.title}</h3>
         
               <Button onClick={() => StatusChange(anime.id)}>
@@ -151,7 +151,7 @@ function HomePage() {
               <DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon>
             </Button>
            </div>
-         </div>
+      
      )} 
 
         
@@ -179,7 +179,8 @@ function HomePage() {
             
         
               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                {anime.title}
+                      {anime.title}
+                      <img className='backgroundImage' src={anime.image} alt="" />  
               </Typography>
               
                 )})}

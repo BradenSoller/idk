@@ -65,7 +65,6 @@ router.post('/', cloudinaryUpload.single("image"), async (req, res) => {
     const title = req.body.title;
     console.log("fileUrl", fileUrl);
     
-
     // Ensure the title is provided
     if (!title) {
       return res.status(400).send("Title is required.");
@@ -75,19 +74,18 @@ router.post('/', cloudinaryUpload.single("image"), async (req, res) => {
     const query = `
       INSERT INTO "anime" ("title", "image")
       VALUES ($1, $2)
-      RETURNING "id";
+      RETURNING "id", "title", "image";
     `;
-
     const values = [title, fileUrl];
 
     // Execute the query
     const result = await pool.query(query, values);
 
-    // If insert is successful, return the anime ID
+    // If insert is successful, return the anime details
     if (result.rows.length > 0) {
       res.status(201).json({
         message: "Anime added successfully",
-        id: result.rows[0].id
+        anime: result.rows[0], // Include the anime details in the response
       });
     } else {
       res.status(500).send("Failed to add anime");
