@@ -136,22 +136,24 @@ function HomePage() {
      {Animes.map((anime) => {
        return (
 
-         <div  className="animeCards"key={anime.id} onClick={() => FetchSingleAnime(anime.id)}>
-             <img onClick={handleOpen} className='cardImage' src={anime.image}></img>
-            <h3 className='cardText'> {anime.title}</h3>
-        
-              <Button onClick={() => StatusChange(anime.id)}>
-                      {anime.is_liked ? (
-                          <StarOutlinedIcon className="star"></StarOutlinedIcon>
-                    ) : (
-                        <StarBorderOutlinedIcon className="OutlinedStar"></StarBorderOutlinedIcon>
-                      )}
-            </Button>
-            <Button className='deleteAnime' onClick={() => deleteAnime(anime)}>
-              <DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon>
-            </Button>
-           </div>
-      
+         <div className="animeCards" key={anime.id} onClick={() => FetchSingleAnime(anime.id)}>
+           <img onClick={handleOpen} className="cardImage" src={anime.image} alt={anime.title} />
+
+           {/* Like/Unlike Button */}
+           <Button className="star" onClick={() => StatusChange(anime.id)}>
+             {anime.is_liked ? (
+               <StarOutlinedIcon className="star" />
+             ) : (
+               <StarBorderOutlinedIcon className="OutlinedStar" />
+             )}
+           </Button>
+
+           {/* Delete Button */}
+           <Button className="deleteAnime" onClick={() => deleteAnime(anime)}>
+             <DeleteOutlineOutlinedIcon />
+           </Button>
+         </div>
+
      )} 
 
         

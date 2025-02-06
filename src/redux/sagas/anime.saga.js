@@ -30,9 +30,8 @@ function* postAnime(action) {
       data: action.payload,
     });
     yield put({
-      type: "NEW_ANIME",
-      payload: response.data
-    })
+      type: "FETCH_ALL_ANIME",
+    });
 
   }
   catch (error) {
