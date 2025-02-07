@@ -16,7 +16,8 @@
     left: 0;
     z-index: -1;
     opacity: 0.55;
-    color: white;
+      filter: blur(8px) ;
+  -webkit-filter: blur(8px) ;
 }
 
 
@@ -42,7 +43,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover; /* Ensures the image fully covers the card */
-    display: block; /* Removes unwanted bottom spacing */
+    display: block; 
+    /* Removes unwanted bottom spacing */
 }
 
 /* Position buttons on top of the image */
