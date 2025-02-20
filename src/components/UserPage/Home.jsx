@@ -47,7 +47,7 @@ function getLabelText(value) {
 }
 
 function HomePage() {
-  const user = useSelector((store) => store.user);
+ 
   const dispatch = useDispatch();
 
   const Animes = useSelector((store) => store.AllAnime);
