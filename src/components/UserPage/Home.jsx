@@ -14,6 +14,9 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
+import AttachFileIcon from '@mui/icons-material/AttachFile';
+import { Input } from "@mui/material";
+
 
 const style = {
   position: "absolute",
@@ -131,14 +134,17 @@ function HomePage() {
           />
         </div>
         <div>
+          <label htmlFor="image-upload" style={{ cursor: "pointer" }}>
+            <AttachFileIcon />
+          </label>
           <input
-            id="event-image-input"
+            id="image-upload"
             type="file"
             onChange={(e) => setImageInput(e.target.files[0])}
-            sx={{
-              width: 230,
-            }}
+            style={{ display: "none" }}
           />
+           
+          
         </div>
         <div>
           <button className="submitAnime" onClick={newAnime}>
