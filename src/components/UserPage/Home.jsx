@@ -47,7 +47,7 @@ function getLabelText(value) {
 }
 
 function HomePage() {
- 
+  const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
   const Animes = useSelector((store) => store.AllAnime);
@@ -124,7 +124,7 @@ function HomePage() {
       <div>
         <div>
           <input
-            className="inputAnime"
+            id="inputAnime"
             type="text"
             value={title}
             onChange={(event) => setTitle(event.target.value)}
