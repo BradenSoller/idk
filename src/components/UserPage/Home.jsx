@@ -134,16 +134,15 @@ function HomePage() {
           />
         </div>
         <div>
-          <label htmlFor="image-upload" style={{ cursor: "pointer" }}>
-            <AttachFileIcon />
-          </label>
+          <Button className="uploadImage">
+            <AttachFileIcon/>
           <input
             id="image-upload"
             type="file"
             onChange={(e) => setImageInput(e.target.files[0])}
             style={{ display: "none" }}
           />
-           
+          </Button>
           
         </div>
         <div>

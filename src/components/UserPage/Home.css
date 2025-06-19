@@ -103,7 +103,7 @@
 .submitAnime {
     position: absolute;
     top: 115px;
-    left:76%;
+    left:74%;
     transform: translateX(-50%);
     width: 100px;
     height: 40px;
@@ -114,10 +114,10 @@
     cursor: pointer;
     font-family: var(--srcsansreg);
 }
-.image-upload {
+.uploadImage{
     position: absolute;
-    top: 10px;
-    left: 40%;
+    top: 5px;
+    left: 30%;
     transform: translateX(-50%);
     width: 100px;
     height: 40px;
