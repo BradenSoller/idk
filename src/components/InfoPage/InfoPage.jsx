@@ -27,15 +27,24 @@ console.log(Animes);
   };
   return (
     
-    <div className="container">
-      <div className="favoriteCard">
-      {Animes.map((anime) => {
+  
+     
+      {/* {Animes.map((anime) => {
         return (
           <div>
             {anime.is_liked &&
               <div className="animeCards">
             
                 <h3>{anime.title}</h3>
+            <div className="animeCards">
+                <img
+                  className="cardImage"
+                  src={anime.image}
+                  alt={anime.title}
+                  />
+                </div>
+           
+
                 <Button onClick={() => StatusChange(anime.id)}>
                   {anime.is_liked ? (
                     <StarOutlinedIcon className="star"></StarOutlinedIcon>
@@ -43,6 +52,8 @@ console.log(Animes);
                     <StarBorderOutlinedIcon className="OutlinedStar"></StarBorderOutlinedIcon>
                   )}
                 </Button>
+               
+
             
               </div>
             }
@@ -50,8 +61,8 @@ console.log(Animes);
         );
       })}
       
-    </div> 
-    </div>
+    </div>  */}
+   
     
   );
 }
