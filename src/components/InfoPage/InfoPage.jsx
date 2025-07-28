@@ -28,21 +28,19 @@ console.log(Animes);
   return (
     
   
-     
-      {/* {Animes.map((anime) => {
+     <div>
+      {Animes.map((anime) => {
         return (
           <div>
             {anime.is_liked &&
               <div className="animeCards">
-            
-                <h3>{anime.title}</h3>
-            <div className="animeCards">
+    \
                 <img
                   className="cardImage"
                   src={anime.image}
                   alt={anime.title}
                   />
-                </div>
+              
            
 
                 <Button onClick={() => StatusChange(anime.id)}>
@@ -61,7 +59,7 @@ console.log(Animes);
         );
       })}
       
-    </div>  */}
+    </div>  
    
     
   );
